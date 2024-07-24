@@ -1,0 +1,12 @@
+E Hunter Naomi 11
+E Emmerich Hal 10
+E Sears David 13
+E Silverburgh Meryl 9
+E Emmerich-Danziger Emma 8
+E Sears Eli 13
+E Sasaki Johnny 9
+T INORDER
+R Emmerich-Danziger Emma
+S
+R Miller Kazuhira
+E Sears George 15

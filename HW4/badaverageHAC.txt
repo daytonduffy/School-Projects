@@ -1,0 +1,152 @@
+# HAC average Linking
+# get the distance between two points x, y
+def distance(point1, point2):
+    return pow(pow(point1[0] - point2[0], 2) + pow(point1[1] - point2[1], 2), .5)
+
+
+# get mid point for later calculations
+def midpoint(p1, p2):
+    mid = list()
+    mid.append((p1[0] + p2[0]) / 2)
+    mid.append((p1[1] + p2[1]) / 2)
+    return mid
+
+
+def minCluster(clusters):
+    minDistance = 10000
+    pair = list()  # should only need one cuz of the use of <  !!! < IS NOT ENOUGH !!!!
+    options = list(list())
+
+    for i in range(len(clusters) - 1):
+        for j in range(i + 1, len(clusters)):
+            clusterDistance = distance(clusters[i], clusters[j])
+            if clusterDistance == minDistance:  # add to options to look at
+                opt = list()
+                if clusters[i][2] < clusters[j][2]:
+                    opt.append(i)
+                    opt.append(j)
+                else:
+                    opt.append(j)
+                    opt.append(i)
+                options.append(opt)
+
+                minDistance = clusterDistance  # update min distance
+                # update pair
+                # i and j are indexes later on not just Cluster number
+                if i < j:  # i is the lower index
+                    pair = (clusters[i][2], clusters[j][2], minDistance, midpoint(clusters[i], clusters[j]))
+                else:
+                    pair = (clusters[j][2], clusters[i][2], minDistance, midpoint(clusters[i], clusters[j]))
+            elif clusterDistance < minDistance:  # explicitly less reset the options
+                minDistance = clusterDistance  # update min distance
+                options.clear()  # reset options for new low
+                opt = list()  # add new min pair
+                if clusters[i][2] < clusters[j][2]:
+                    opt.append(i)
+                    opt.append(j)
+                else:
+                    opt.append(j)
+                    opt.append(i)
+                options.append(opt)
+
+
+    # look at options list and pick the best one
+    minFind = list(list())
+    lowC = 100000
+    if len(options) > 1:  # multiple distances equal, find lowest first value
+        for index in options:
+            if clusters[index[0]][2] < lowC:  # index[0] first index is smaller < means reset for new min
+                minFind = list(list())
+                minFind.append(index)
+                lowC = clusters[index[0]][2]
+            elif clusters[index[0]][2] == lowC:  # lowC[0] holds min value equal means add to list
+                minFind.append(index)
+    else:  # SET POINT, one options list so use index 0
+        point1 = list()
+        point1.append(clusters[options[0][0]][0])
+        point1.append(clusters[options[0][0]][1])
+        point2 = list()
+        point2.append(clusters[options[0][1]][0])
+        point2.append(clusters[options[0][1]][1])
+        pair = (clusters[options[0][0]][2], clusters[options[0][1]][2], minDistance, midpoint(point1, point2))
+
+
+    # if minFind only has one value ties are done, else check options[1]
+    lowC = 100000
+    options = list()
+    if len(minFind) > 1:  # multiple distances equal with same start cluster check second SET POINT at end
+        for index in minFind:
+            if clusters[index[1]][2] < lowC:  # index[0] first index is smaller < means reset for new min
+                options.clear()
+                options.append(index)
+                lowC = clusters[index[1]][2]
+            # no == want strictly smallest
+        point1 = list()
+        point1.append(clusters[options[0]][0])
+        point1.append(clusters[options[0]][1])
+        point2 = list()
+        point2.append(clusters[options[1]][0])
+        point2.append(clusters[options[1]][1])
+        pair = (clusters[options[0]][2], clusters[options[1]][2], minDistance, midpoint(point1, point2))
+    elif len(minFind) == 1:  # SET POINT, one value in minFind easy to use
+        point1 = list()
+        point1.append(clusters[minFind[0][0]][0])
+        point1.append(clusters[minFind[0][0]][1])
+        point2 = list()
+        point2.append(clusters[minFind[0][1]][0])
+        point2.append(clusters[minFind[0][1]][1])
+        pair = (clusters[minFind[0][0]][2], clusters[minFind[0][1]][2], minDistance, midpoint(point1, point2))
+
+    # return the closets pair of clusters
+    return pair
+
+
+# considering it done for now
+# input is the 2D pokedex, mxn array m=20 pokemon n=2 x,y
+def hac(dataset):
+    # assemble original cluster list
+    # list(i) = x, y, cluster#, #originals
+    clusters = list(list())
+    i = 0
+    for cluster in dataset:
+        info = list()
+        info.append(cluster[0])  # x coordinate
+        info.append(cluster[1])  # y coordinate
+        info.append(i)  # cluster number, from iteration
+        i = i + 1
+        info.append(1)  # 1 original in 20 originals duh
+        clusters.append(info)  # put it in the big list
+
+    # set up Z
+    i = 0
+    Z = list(list())  # I mean just keep it at m-1 x 4 matrix by iterations
+    for i in range(len(dataset) - 1):  # iterate m - 1 times
+        points = minCluster(clusters)
+
+        zi = list()
+        zi.append(points[0])  # lower cluster number
+        zi.append(points[1])  # higher cluster number
+        zi.append(points[2])  # distance between points
+        # we need to get orig nums clusters[i][3] will hold the number of originals for clusters[i][2]
+        x = 0
+        k = 0
+        used = list()
+        for cluster in clusters:
+            if cluster[2] == points[0] or cluster[2] == points[1]:
+                x = x + cluster[3]
+                used.append(k)
+            k = k + 1
+        zi.append(x)
+        Z.append(zi)
+
+        # remove used clusters from list
+        trash1 = clusters[used[0]]
+        trash2 = clusters[used[1]]
+        clusters.remove(trash1)
+        clusters.remove(trash2)
+
+        # add new cluster to cluster list; clusters(i) = x, y, cluster#, #originals
+        clusters.append((points[3][0], points[3][1], 20 + i, x))
+
+    # convert Z to a np array
+    return np.array(Z

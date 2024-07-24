@@ -1,0 +1,145 @@
+Dayton Duffy, drduffy@wisc.edu, 2.
+What file would you like to use?
+input.txt
+What would you like me to call you?
+connor riley
+Nice to meet you, connor riley
+
+-----------------------------
+  Welcome, I am the Oracle
+
+What would you like to know?
+-----------------------------
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+q3
+Love will be your end, I'm sorry.
+
+Would you like to know more?
+y/n
+y
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+q2
+Meaning only comes from you.
+
+Would you like to know more?
+y/n
+q1
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+y
+I don't know what you mean.
+
+Would you like to know more?
+y/n
+y
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+q1
+Bernie Sanders.
+
+Would you like to know more?
+y/n
+y
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+n
+I don't know what you mean.
+
+Would you like to know more?
+y/n
+
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+q4
+Baby don't hurt me.
+
+Would you like to know more?
+y/n
+
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+
+I don't know what you mean.
+
+Would you like to know more?
+y/n
+q5
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+y
+I don't know what you mean.
+
+Would you like to know more?
+y/n
+q5
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+
+I don't know what you mean.
+
+Would you like to know more?
+y/n
+y
+
+q to leave me
+Q1: Who will win in 2020?
+Q2: What is the meaning of life?
+Q3: How will I die?
+Q4: What is love?
+Q5: Is water wet?
+q5
+Is fire on fire? Come on you're better than this.
+
+Would you like to know more?
+y/n
+n
+Leave with peace in your heart.
+
+Thank you for our time together

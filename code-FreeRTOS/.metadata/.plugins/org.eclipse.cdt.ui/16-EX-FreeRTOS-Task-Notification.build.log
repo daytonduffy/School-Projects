@@ -1,0 +1,8 @@
+
+**** Build of configuration Debug for project 16-EX-FreeRTOS-Task-Notification ****
+
+"C:\\ti\\ccs1010\\ccs\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: '16-EX-FreeRTOS-Task-Notification.out' is up to date.
+
+**** Build Finished ****

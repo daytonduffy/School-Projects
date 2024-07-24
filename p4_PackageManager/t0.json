@@ -1,0 +1,44 @@
+{
+    "packages": [
+        {
+            "name": "E",
+            "dependencies": ["H", "G"]
+        },
+        {
+            "name": "I",
+            "dependencies": ["G"]
+        },
+        {
+            "name": "K",
+            "dependencies": ["G"]
+        }
+        {
+            "name": "L",
+            "dependencies": ["I"]
+        }
+        {
+            "name": "J",
+            "dependencies": ["I", "K"]
+        },
+        {
+            "name": "A",
+            "dependencies": ["E", "D"]
+        },
+        {
+            "name": "B",
+            "dependencies": ["A"]
+        }
+        {
+            "name": "D",
+            "dependencies": ["B"]
+        }
+        {
+            "name": "C",
+            "dependencies": ["B", "D"]
+        }
+        {
+            "name": "F",
+            "dependencies": ["C"]
+        }
+    ] 
+}
